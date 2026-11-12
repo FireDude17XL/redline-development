@@ -7,6 +7,8 @@
 
   function card(app, i) {
     const repoUrl = `https://github.com/${app.repo}`;
+    // An app that hosts its own downloads lists them in `links` instead of using GitHub releases.
+    const links = Array.isArray(app.links) && app.links.length ? app.links.filter((l) => /^https:\/\//i.test(l.url)) : null;
     const icon = /\.(png|jpe?g|svg|webp|gif)$/i.test(app.icon || "")
       ? `<img src="${esc(app.icon)}" alt="">`
       : esc(app.icon || app.name[0]);
@@ -22,14 +24,19 @@
       </div>
       <p class="desc">${esc(app.description)}</p>
       <div class="tags">${(app.tags || []).map((t) => `<span>${esc(t)}</span>`).join("")}</div>
-      <div class="release" id="rel-${i}"><span class="muted">Checking latest release…</span></div>
+      ${links
+        ? `${app.note ? `<div class="release"><span class="muted">${esc(app.note)}</span></div>` : ""}
+      <div class="actions">
+        ${links.map((l, n) => `<a class="btn ${n ? "ghost" : "primary"}" href="${esc(l.url)}">${esc(l.label)}</a>`).join("")}
+      </div>`
+        : `<div class="release" id="rel-${i}"><span class="muted">Checking latest release…</span></div>
       <div class="actions">
         <a class="btn primary" id="dl-${i}" href="${repoUrl}/releases/latest">Download latest</a>
         <a class="btn ghost" href="${repoUrl}">Source</a>
         <a class="btn ghost" href="${repoUrl}/releases">All releases</a>
-      </div>`;
+      </div>`}`;
     grid.appendChild(el);
-    loadRelease(app, i);
+    if (!links) loadRelease(app, i);
   }
 
   async function loadRelease(app, i) {
