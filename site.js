@@ -3,7 +3,8 @@
   const $ = (s) => document.querySelector(s);
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const fmtSize = (b) => (b > 1048576 ? (b / 1048576).toFixed(1) + " MB" : Math.max(1, Math.round(b / 1024)) + " KB");
-  const fmtDate = (d) => new Date(d).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+  // A bare "YYYY-MM-DD" parses as UTC midnight, which shows the previous day west of UTC; read it as local time.
+  const fmtDate = (d) => new Date(/^\d{4}-\d{2}-\d{2}$/.test(d) ? d + "T00:00:00" : d).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
   const appUrl = (a) => `app.html?id=${encodeURIComponent(a.id)}`;
   const ghUrl = (a) => `https://github.com/${a.repo}`;
   const iconHtml = (a) =>
