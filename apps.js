@@ -21,11 +21,11 @@ window.REDLINE_APPS = [
     tags: ["Mods", "Windows"],
     icon: "RM",                                  // 1–2 letters, or an image path like "assets/redline-mods/icon.png"
     about: [
-      "Redline Mods is a Windows mod manager for Species: Unknown and Black Ops III, with a built-in Mod Store for finding and installing mods.",
+      "Redline Mods is a Windows mod manager for a variety of games, with a built-in Mod Store for finding and installing mods.",
       "TODO: a sentence or two more about who it's for and what makes it different."
     ],
     features: [
-      "Manage mods for Species: Unknown and Black Ops III in one place",
+      "Manage mods for multiple games in one place",
       "Browse and install mods from the built-in Mod Store",
       // "TODO: another key feature",
     ],
