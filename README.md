@@ -2,10 +2,12 @@
 
 Static download hub for Redline Development apps, hosted on GitHub Pages.
 
-## Adding an app
-Open `apps.js` and copy one of the blocks. Set `repo` to the app's `owner/repo`.
-The page reads that repo's latest GitHub release and lists its downloads automatically.
-The repo (or at least its releases) must be public for visitors to download.
+## Pages
+- `index.html`: home page with featured apps
+- `apps.html`: grid of every app, with search
+- `app.html?id=<app id>`: one page per app (about, features, screenshots, downloads)
 
-## Publishing
-Settings → Pages → Deploy from branch → `main` / root.
+## Adding or editing an app
+Everything comes from `apps.js`. Copy a block, give it a unique `id`, and fill in
+`about`, `features` and `screenshots`. Put images in `assets/<app id>/`.
+Downloads are read from the latest GitHub release of `repo`, which must be public.

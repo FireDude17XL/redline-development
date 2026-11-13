@@ -10,13 +10,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body data-page="home">
   <header class="nav">
-    <a class="brand" href="#">
+    <a class="brand" href="index.html">
       <span class="logo" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M6 22 L14 12 L19 17 L26 9"/></svg></span>
       Redline <span class="muted">Development</span>
     </a>
-    <nav><a href="#apps">Apps</a><a href="#about">About</a></nav>
+    <nav><a href="index.html" data-nav="home">Home</a><a href="apps.html" data-nav="apps">Apps</a></nav>
   </header>
 
   <main>
@@ -24,23 +24,22 @@
       <div class="redline" aria-hidden="true"></div>
       <h1>Everything we build,<br><span class="accent">one place to get it.</span></h1>
       <p class="lead">Official downloads for every Redline Development app and service, always pointing at the latest release.</p>
-      <a class="btn primary" href="#apps">Browse apps</a>
+      <a class="btn primary lg" href="apps.html">Browse all apps</a>
     </section>
 
-    <section id="apps">
-      <h2>Apps</h2>
-      <div id="app-grid" class="grid"></div>
+    <section>
+      <div class="section-head"><h2>Featured apps</h2><a class="link" href="apps.html">View all <span id="app-count"></span> →</a></div>
+      <div id="featured" class="grid"></div>
     </section>
 
-    <section id="about" class="about">
+    <section class="about">
       <h2>About</h2>
       <p>Redline Development is a small team shipping mods, apps and services. Every download here comes straight from the project's official GitHub releases.</p>
     </section>
   </main>
 
-  <footer>© <span id="year"></span> Redline Development</footer>
-
+  <footer>© <span data-year></span> Redline Development</footer>
   <script src="apps.js"></script>
-  <script src="main.js"></script>
+  <script src="site.js"></script>
 </body>
 </html>
