@@ -17,7 +17,7 @@ window.REDLINE_APPS = [
     name: "Redline Mods",
     repo: "FireDude17XL/redline-mods-releases", // public releases-only repo (source stays private)
     sourcePublic: false,                         // hides the "Source code" link
-    tagline: "A Windows mod manager for Species: Unknown and Black Ops III.",
+    tagline: "A Windows mod manager for a variety of games.",
     tags: ["Mods", "Windows"],
     icon: "RM",                                  // 1–2 letters, or an image path like "assets/redline-mods/icon.png"
     about: [
