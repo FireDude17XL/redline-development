@@ -88,3 +88,9 @@ footer{text-align:center;padding:32px 16px;color:var(--muted);font-size:14px;bor
   .app-hero-cta{align-items:flex-start}
 }
 @media (max-width:480px){.grid{grid-template-columns:1fr}.hero{padding:72px 0 48px}.nav nav{gap:16px}}
+.dl-list{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.dl-list li{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:12px 0;border-bottom:1px solid var(--border)}
+.dl-list li:last-child{border-bottom:0}
+.dl-list li>div{display:flex;flex-direction:column;min-width:0}
+.dl-list .btn{flex:none;padding:8px 14px}
+.side-links+.side-links{margin-top:14px}

@@ -64,6 +64,35 @@
     draw();
   }
 
+
+  // Apps that list their own download links (not GitHub releases)
+  function detectOS() {
+    const ua = navigator.userAgent, p = navigator.platform || "";
+    if (/iPhone|iPad|iPod/.test(ua) || (p === "MacIntel" && navigator.maxTouchPoints > 1)) return "iphone";
+    if (/Android/.test(ua)) return "android";
+    if (/Win/.test(p) || /Windows/.test(ua)) return "windows";
+    if (/Mac/.test(p)) return "mac";
+    return "other";
+  }
+  function renderDirect(a) {
+    const os = detectOS();
+    const list = a.downloads;
+    const best = list.find((d) => (d.os || "").toLowerCase() === os) || list.find((d) => d.os === "web") || list[0];
+    const btn = $("#dl");
+    btn.textContent = best.button || `Download for ${best.platform}`;
+    btn.href = best.url;
+    if (best.download !== false && best.os !== "web" && best.os !== "iphone") btn.setAttribute("download", "");
+    if (best.os === "web" || best.os === "iphone") { btn.target = "_blank"; btn.rel = "noopener"; }
+    $("#dl-note").textContent = [a.version && `Version ${a.version}`, "Other platforms below"].filter(Boolean).join(" · ");
+    if (a.version) $("#d-version").textContent = a.version;
+    if (a.released) $("#d-date").textContent = fmtDate(a.released);
+    $("#downloads").innerHTML = `<ul class="dl-list">${list.map((d) => `
+      <li>
+        <div><strong>${esc(d.platform)}</strong>${d.note ? `<span class="muted small">${esc(d.note)}</span>` : ""}</div>
+        <a class="btn ${d === best ? "primary" : "ghost"}" href="${esc(d.url)}"${d.os === "web" || d.os === "iphone" ? ' target="_blank" rel="noopener"' : " download"}>${esc(d.label || "Download")}</a>
+      </li>`).join("")}</ul>`;
+  }
+
   function renderApp() {
     const id = new URLSearchParams(location.search).get("id");
     const a = APPS.find((x) => x.id === id);
@@ -101,6 +130,7 @@
           </section>
           ${about.length ? `<section><h2>About this app</h2>${about.map((p) => `<p class="prose">${esc(p)}</p>`).join("")}</section>` : ""}
           ${features.length ? `<section><h2>What it does</h2><ul class="features">${features.map((f) => `<li>${esc(f)}</li>`).join("")}</ul></section>` : ""}
+          ${(a.sections || []).map((s) => `<section><h2>${esc(s.title)}</h2>${(s.paragraphs || []).map((p) => `<p class="prose">${esc(p)}</p>`).join("")}${(s.bullets || []).length ? `<ul class="features">${s.bullets.map((b) => `<li>${esc(b)}</li>`).join("")}</ul>` : ""}</section>`).join("")}
           <section id="downloads-sec">
             <h2>Downloads</h2>
             <div id="downloads" class="panel"><span class="muted">Checking latest release…</span></div>
@@ -114,6 +144,7 @@
               <dt>Released</dt><dd id="d-date">—</dd>
               <dt>Category</dt><dd>${esc((a.tags || []).join(", ") || "—")}</dd>
             </dl>
+            ${(a.links || []).length ? `<div class="side-links">${a.links.map((l) => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a>`).join("")}</div>` : ""}
             ${a.downloadsPublic === false ? "" : `<div class="side-links">
               <a href="${ghUrl(a)}/releases">All releases</a>
               ${a.sourcePublic !== false ? `<a href="${ghUrl(a)}">Source code</a>` : ""}
@@ -122,6 +153,7 @@
         </aside>
       </div>`;
 
+    if (a.downloads && a.downloads.length) { renderDirect(a); return; }
     latestRelease(a).then((r) => {
       const dl = $("#downloads");
       if (!r) {
