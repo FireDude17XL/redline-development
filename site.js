@@ -41,7 +41,7 @@
   function fillVersions(root) {
     root.querySelectorAll(".tile-version").forEach((el) => {
       const a = APPS.find((x) => x.repo === el.dataset.repo);
-      latestRelease(a).then((r) => { if (r) el.textContent = r.tag_name; });
+      if (a && a.repo) latestRelease(a).then((r) => { if (r) el.textContent = r.tag_name; });
     });
   }
 

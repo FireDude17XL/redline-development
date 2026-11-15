@@ -80,5 +80,42 @@ window.REDLINE_APPS = [
       { os: "web", platform: "Web", label: "Open web app", button: "Open Scrambl", url: "https://crackerjackm.github.io/scrambl-app/", note: "Works in any modern browser." }
     ],
     screenshots: []
+  },
+  {
+    id: "redline-tones",
+    name: "Redline Tones",
+    repo: "FireDude17XL/redline-tones-releases", // not created yet; downloadsPublic keeps links hidden
+    downloadsPublic: false,                      // no public download yet: page shows "Coming soon"
+    sourcePublic: false,
+    tagline: "A guitar amp and effects studio for Windows, as an app and a VST3 plugin.",
+    tags: ["Audio", "Guitar", "Windows", "VST3"],
+    icon: "assets/redline-tones/icon.png",
+    version: "1.3.6",
+    about: [
+      "Redline Tones is a guitar amp and effects app for Windows. Plug in your guitar through an audio interface and build a full rig: pedals, amp, cabinet and microphones, all with original DSP and artwork. It runs as a standalone app or as a VST3 plugin in your DAW.",
+      "Lay out pedals on a pedalboard, run the amp through a modelled cab or your own impulse response, and save the whole rig as a tone you can come back to, share, or pick up from the online Tone Store."
+    ],
+    features: [
+      "Seven built-in amp voices, from sparkling cleans and blues to plexi crunch and modern high gain, oversampled 4× for a smooth top end",
+      "Load Neural Amp Modeler (.nam) captures in place of the built-in amps",
+      "Cabinet section with six modelled cabs and two virtual mics, or load your own impulse responses",
+      "31 pedals: gate, compressor, drives and fuzz, modulation, delays and reverb, wah, octave and pitch shifters, harmonizer, synth and more",
+      "Free-form pedalboard with cables, where the chain order is the signal order; place pedals before or after the amp",
+      "Tone Library with favourites and recents, plus nine factory tones to start from",
+      "Online Tone Store for sharing and downloading tones",
+      "Built-in tuner and MIDI learn on any control",
+      "In-app updates that verify each download before installing"
+    ],
+    sections: [
+      {
+        title: "Requirements",
+        bullets: [
+          "Windows 10 or 11, 64-bit, with a CPU that supports AVX2",
+          "An audio interface is recommended; ASIO drivers give the lowest latency",
+          "The VST3 plugin works in any VST3 host"
+        ]
+      }
+    ],
+    screenshots: []
   }
 ];
