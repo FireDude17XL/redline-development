@@ -163,6 +163,7 @@
         btn.classList.add("disabled");
         btn.removeAttribute("href");
         $("#dl-note").textContent = "No public release yet";
+        if (a.version) $("#d-version").textContent = a.version;
         dl.innerHTML = a.downloadsPublic === false
           ? `<span class="muted">Downloads for ${esc(a.name)} aren't available yet. Check back soon.</span>`
           : `<span class="muted">No release is published yet. Check <a href="${ghUrl(a)}/releases">GitHub releases</a> for updates.</span>`;
