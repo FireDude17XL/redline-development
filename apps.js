@@ -19,7 +19,7 @@ window.REDLINE_APPS = [
     sourcePublic: false,                         // hides the "Source code" link
     tagline: "A Windows mod manager for a variety of games.",
     tags: ["Mods", "Windows"],
-    icon: "RM",                                  // 1–2 letters, or an image path like "assets/redline-mods/icon.png"
+    icon: "assets/redline-mods/icon.png",        // 1–2 letters, or an image path
     about: [
       "Redline Mods is a Windows mod manager for a variety of games, with a built-in Mod Store for finding and installing mods.",
       "TODO: a sentence or two more about who it's for and what makes it different."

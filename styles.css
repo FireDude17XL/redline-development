@@ -42,6 +42,7 @@ section{margin-bottom:64px}
 .tile:hover .arrow{color:var(--red-2);transform:translateX(3px)}
 .app-icon{flex:none;width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,var(--red),#7a0c16);display:grid;place-items:center;font-weight:800;font-size:19px;overflow:hidden;color:#fff}
 .app-icon img{width:100%;height:100%;object-fit:cover}
+.app-icon:has(img){background:none}
 .app-icon.xl{width:96px;height:96px;border-radius:22px;font-size:32px}
 .tags{display:flex;gap:6px;flex-wrap:wrap}.tags span{font-size:12px;padding:3px 10px;border-radius:999px;background:var(--surface-2);border:1px solid var(--border);color:var(--muted)}
 /* buttons */
