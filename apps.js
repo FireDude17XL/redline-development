@@ -34,6 +34,30 @@ window.REDLINE_APPS = [
     ]
   },
   {
+    id: "overdrive-rgb",
+    name: "Overdrive RGB",
+    repo: "FireDude17XL/overdrive-rgb-releases", // public releases-only repo (source stays private)
+    sourcePublic: false,                          // hides the "Source code" link
+    tagline: "RGB lighting, fan control and PC monitoring in one Windows app.",
+    tags: ["RGB", "Fans", "Windows"],
+    icon: "assets/overdrive-rgb/icon.png",
+    about: [
+      "Overdrive RGB brings your PC's lighting, fans and sensors together in one app, so you don't need a separate vendor program for each device.",
+      "It runs quietly in the system tray, keeps your fan curves and lighting going in the background, and updates itself when a new version is out."
+    ],
+    features: [
+      "Live PC monitoring: CPU, GPU, memory, drives and fan speeds",
+      "Fan curves with smoothing and a safe 100% fallback if a sensor is lost",
+      "RGB lighting for fan controllers, motherboard headers, keyboards and DDR5 memory",
+      "Mouse DPI stages and keyboard lighting",
+      "Audio: switch devices, per-app volume and a 10-band EQ",
+      "Updates itself automatically"
+    ],
+    screenshots: [
+      // { src: "assets/overdrive-rgb/shot-1.png", caption: "PC Monitoring" },
+    ]
+  },
+  {
     id: "scrambl",
     name: "Scrambl",
     repo: "CrackerJackM/Scrambl",
