@@ -37,6 +37,7 @@ window.REDLINE_APPS = [
     id: "overdrive-rgb",
     name: "Overdrive RGB",
     repo: "FireDude17XL/overdrive-rgb-releases", // public releases-only repo (source stays private)
+    downloadsPublic: false,                       // wired in but hidden for now: flip to true to show the download button
     sourcePublic: false,                          // hides the "Source code" link
     tagline: "RGB lighting, fan control and PC monitoring in one Windows app.",
     tags: ["RGB", "Fans", "Windows"],
