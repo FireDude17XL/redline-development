@@ -67,7 +67,7 @@ window.REDLINE_APPS = [
     tagline: "Free, anonymous chat where every message is end-to-end encrypted.",
     tags: ["Chat", "Windows", "Mac", "iPhone", "Web"],
     icon: "assets/scrambl/icon.png",
-    version: "1.6.0",
+    version: "1.7.0",
     released: "2026-11-12",
     about: [
       "Scrambl is a free, anonymous chat app for Windows, Mac, iPhone and the web. Every message is end-to-end encrypted, there are no sign-ups and no tracking, and the server only ever stores and relays ciphertext it can't read.",
@@ -99,10 +99,10 @@ window.REDLINE_APPS = [
     ],
     downloads: [
       // os: windows | mac | iphone | web. The big button picks the visitor's platform.
-      { os: "windows", platform: "Windows", label: "Download installer (86 MB)", url: "https://caidens-macbook-pro.tail670831.ts.net:10000/download/windows", note: "Unsigned: if SmartScreen warns, choose More info → Run anyway. Runs in the system tray." },
-      { os: "mac", platform: "Mac", label: "Download disk image (181 MB)", url: "https://caidens-macbook-pro.tail670831.ts.net:10000/download/mac", note: "Apple Silicon and Intel. Unsigned: allow it once under Privacy & Security → Open Anyway." },
-      { os: "iphone", platform: "iPhone", label: "Open in Safari", button: "Open Scrambl", url: "https://crackerjackm.github.io/scrambl-app/", note: "Open in Safari, then Share → Add to Home Screen. iOS 16.4+ for notifications." },
-      { os: "web", platform: "Web", label: "Open web app", button: "Open Scrambl", url: "https://crackerjackm.github.io/scrambl-app/", note: "Works in any modern browser." }
+      { os: "windows", platform: "Windows", label: "Download installer (86 MB)", url: "https://scrambl.duckdns.org/download/windows", note: "Unsigned: if SmartScreen warns, choose More info → Run anyway. Runs in the system tray." },
+      { os: "mac", platform: "Mac", label: "Download disk image (182 MB)", url: "https://scrambl.duckdns.org/download/mac", note: "Apple Silicon and Intel. Unsigned: allow it once under Privacy & Security → Open Anyway." },
+      { os: "iphone", platform: "iPhone", label: "Open in Safari", button: "Open Scrambl", url: "https://scrambl.duckdns.org/", note: "Open in Safari, then Share → Add to Home Screen. iOS 16.4+ for notifications." },
+      { os: "web", platform: "Web", label: "Open web app", button: "Open Scrambl", url: "https://scrambl.duckdns.org/", note: "Works in any modern browser." }
     ],
     screenshots: [
       { src: "assets/scrambl/group-chat.webp", caption: "Group chats with replies, reactions and photos" },
@@ -121,7 +121,7 @@ window.REDLINE_APPS = [
     tagline: "A guitar amp and effects studio for Windows, as an app and a VST3 plugin.",
     tags: ["Audio", "Guitar", "Windows", "VST3"],
     icon: "assets/redline-tones/icon.png",
-    version: "1.3.6",
+    version: "1.4.4",
     about: [
       "Redline Tones is a guitar amp and effects app for Windows. Plug in your guitar through an audio interface and build a full rig: pedals, amp, cabinet and microphones, all with original DSP and artwork. It runs as a standalone app or as a VST3 plugin in your DAW.",
       "Lay out pedals on a pedalboard, run the amp through a modelled cab or your own impulse response, and save the whole rig as a tone you can come back to, share, or pick up from the online Tone Store."
