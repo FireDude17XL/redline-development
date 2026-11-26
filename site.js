@@ -123,11 +123,15 @@
 
       <div class="app-layout">
         <div class="app-main">
-          <section>
+          <section class="shots-sec">
             <h2>Screenshots</h2>
-            ${shots.length
-              ? `<div class="gallery">${shots.map((s) => `<figure><a href="${esc(s.src)}" target="_blank" rel="noopener"><img src="${esc(s.src)}" alt="${esc(s.caption || a.name)}" loading="lazy"></a>${s.caption ? `<figcaption>${esc(s.caption)}</figcaption>` : ""}</figure>`).join("")}</div>`
-              : `<div class="gallery placeholder">${[1, 2, 3].map(() => `<div class="shot-ph"><span>Screenshot coming soon</span></div>`).join("")}</div>`}
+            <div class="shots-wrap">
+              <button type="button" class="shots-btn prev" data-dir="-1" aria-label="Previous screenshot" hidden>‹</button>
+              ${shots.length
+                ? `<div class="shots" aria-label="Screenshots">${shots.map((s) => `<figure><a href="${esc(s.src)}" target="_blank" rel="noopener"><img src="${esc(s.src)}" alt="${esc(s.caption || a.name)}"></a>${s.caption ? `<figcaption>${esc(s.caption)}</figcaption>` : ""}</figure>`).join("")}</div>`
+                : `<div class="shots placeholder">${[1, 2, 3].map(() => `<figure><div class="shot-ph"><span>Screenshot coming soon</span></div></figure>`).join("")}</div>`}
+              <button type="button" class="shots-btn next" data-dir="1" aria-label="Next screenshot" hidden>›</button>
+            </div>
           </section>
           ${about.length ? `<section><h2>About this app</h2>${about.map((p) => `<p class="prose">${esc(p)}</p>`).join("")}</section>` : ""}
           ${features.length ? `<section><h2>What it does</h2><ul class="features">${features.map((f) => `<li>${esc(f)}</li>`).join("")}</ul></section>` : ""}
@@ -153,6 +157,42 @@
           </div>
         </aside>
       </div>`;
+
+    // Screenshot carousel: arrows scroll about one screenshot; each hides at its end, both hide when nothing overflows
+    const strip = main.querySelector(".shots");
+    const prev = main.querySelector(".shots-btn.prev"), next = main.querySelector(".shots-btn.next");
+    if (strip && prev && next) {
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+      // Snap points: the start of each screenshot, capped at the far end of the row
+      const stops = () => {
+        const max = strip.scrollWidth - strip.clientWidth;
+        return [...strip.children].map((f) => Math.min(f.offsetLeft - strip.offsetLeft, max));
+      };
+      const update = () => {
+        const media = strip.querySelector("img, .shot-ph");
+        if (media && media.offsetHeight) strip.parentNode.style.setProperty("--btn-top", media.offsetHeight / 2 + "px");
+        const max = strip.scrollWidth - strip.clientWidth;
+        const last = Math.max(...stops());
+        prev.hidden = strip.scrollLeft <= 2;
+        next.hidden = max <= 2 || strip.scrollLeft >= last - 2;
+      };
+      // Remember where a click is heading, so quick repeated clicks keep advancing while a scroll is still animating
+      let target = null, settle;
+      const go = (dir) => {
+        const list = stops(), x = target ?? strip.scrollLeft;
+        const t = dir > 0 ? list.find((p) => p > x + 2) : [...list].reverse().find((p) => p < x - 2);
+        if (t === undefined) return;
+        target = t;
+        strip.scrollTo({ left: t, behavior: reduce.matches ? "auto" : "smooth" });
+      };
+      strip.addEventListener("scroll", () => { clearTimeout(settle); settle = setTimeout(() => (target = null), 150); }, { passive: true });
+      prev.addEventListener("click", () => go(-1));
+      next.addEventListener("click", () => go(1));
+      strip.addEventListener("scroll", update, { passive: true });
+      window.addEventListener("resize", update);
+      strip.querySelectorAll("img").forEach((img) => img.addEventListener("load", update));
+      update();
+    }
 
     if (a.downloads && a.downloads.length) { renderDirect(a); return; }
     latestRelease(a).then((r) => {
