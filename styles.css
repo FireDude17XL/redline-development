@@ -65,7 +65,7 @@ section{margin-bottom:64px}
 .features li::before{content:"";position:absolute;left:0;top:.62em;width:10px;height:3px;border-radius:2px;background:var(--red)}
 .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
 .gallery figure{margin:0}
-.gallery img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:12px;border:1px solid var(--border);display:block}
+.gallery img{width:100%;height:auto;object-fit:cover;border-radius:12px;border:1px solid var(--border);display:block}
 .gallery figcaption{font-size:13px;color:var(--muted);margin-top:6px}
 .shot-ph{aspect-ratio:16/10;border-radius:12px;border:1px dashed var(--border);background:repeating-linear-gradient(135deg,var(--surface),var(--surface) 12px,#16161b 12px,#16161b 24px);display:grid;place-items:center}
 .shot-ph span{font-size:13px;color:var(--muted)}

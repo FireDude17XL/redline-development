@@ -104,7 +104,13 @@ window.REDLINE_APPS = [
       { os: "iphone", platform: "iPhone", label: "Open in Safari", button: "Open Scrambl", url: "https://crackerjackm.github.io/scrambl-app/", note: "Open in Safari, then Share → Add to Home Screen. iOS 16.4+ for notifications." },
       { os: "web", platform: "Web", label: "Open web app", button: "Open Scrambl", url: "https://crackerjackm.github.io/scrambl-app/", note: "Works in any modern browser." }
     ],
-    screenshots: []
+    screenshots: [
+      { src: "assets/scrambl/group-chat.webp", caption: "Group chats with replies, reactions and photos" },
+      { src: "assets/scrambl/temporary-chat.webp", caption: "Temporary chats that delete themselves" },
+      { src: "assets/scrambl/invite.webp", caption: "Invite people with a link or QR code" },
+      { src: "assets/scrambl/new-chat.webp", caption: "Start a steady or temporary chat" },
+      { src: "assets/scrambl/blue-mint-light.webp", caption: "Blue-Mint light theme" }
+    ]
   },
   {
     id: "redline-tones",
